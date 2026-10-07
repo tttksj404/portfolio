@@ -6,7 +6,7 @@
 
 | 항목 | 내용 |
 | --- | --- |
-| 기간 | 2026년 7월 하순 ~ 8월 중순 (실험 결과 파일 7월 23일 ~ 8월 10일, 공개 커밋 7월 30일 ~ 8월 14일) |
+| 기간 | 2026년 7월 하순 ~ 8월 중순 (실험 결과 파일 7월 23일 ~ 8월 10일, 공개 커밋 7월 30일 ~ 8월 14일, 10월 6일 그림 파일 복구 커밋 제외) |
 | 형태 | AIoT 팀 프로젝트(단일 CCTV 위험관제 MVP)의 AI 파트. 이 저장소의 범위는 후보 모델 비교 실험, 평가 프로토콜, 승격 gate 코드, 실험 자산 보존이다. 엣지 장치, 이벤트 백엔드, 대시보드는 포함하지 않는다. |
 | 핵심 기술 | SOLIDER Swin-B(속성 PAR, ReID), CLIP ViT-L/14 파인튜닝·지식 증류, strict ReID 평가, SHA-256으로 증거 파일을 다시 검증하는 Python gate |
 | 대표 결과 | strict ReID 최고 구성(SOLIDER Top-3 평균)이 Rank-1 0.4737, Recall@5 0.7789로 자동 매칭 기준(0.85, 0.95)에 못 미쳤다. 자동 동일인 매칭은 `BLOCKED`, Top-K 후보 검색에만 허용했다. proxy 점수만 있는 후보는 gate가 `NOT_APPROVED`(종료 코드 2)로 막고, 단위 테스트 6개가 통과한다(직접 재실행). |
@@ -36,9 +36,9 @@ AI 파트에서 네 가지를 맡았다. 속성(CLIP 파인튜닝, SOLIDER PA he
 
 ### strict ReID (CHIRLA 공개 proxy, query 95개, gallery identity 11개)
 
-![strict ReID 6개 구성과 승격 기준](../assets/cctv/c_reid.png)
+![strict ReID 7개 구성과 승격 기준](../assets/cctv/c_reid.png)
 
-*저장소 결과 JSON 6개의 수치로 다시 그린 그림이다. 모든 막대가 기준선 아래에 있다.*
+*저장소 결과 JSON 7개의 수치로 다시 그린 그림이다. 모든 막대가 기준선 아래에 있다.*
 
 - 최고 Rank-1은 SOLIDER Top-3 평균의 0.4737(Recall@5 0.7789)이다. SOLIDER 전체 평균은 Recall@5가 0.8421로 더 높지만 Rank-1이 0.4211이어서, Rank-1이 가장 높은 Top-3 평균을 후보 검색기로 골랐다(`.../experiments/results/chirla_solider_official_strict_hflip_*.json`).
 - CLIP(Rank-1 0.2105), SigLIP2(0.2947), DINOv2(0.1895)는 SOLIDER보다 낮았다. 95% 신뢰구간은 CLIP(0.14~0.29)과 DINOv2(0.12~0.27)가 SOLIDER Top-3(0.38~0.57)와 겹치지 않고 SigLIP2(0.21~0.39)는 일부 겹친다.

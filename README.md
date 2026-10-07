@@ -5,33 +5,33 @@
 - 관심 직무: 금융 IT·디지털 ICT, AI·데이터 제품 엔지니어, AI 기반 서비스 기획
 - 주로 쓰는 기술: Python, FastAPI·Django·Flask, SQL, vLLM, PyTorch, LLM 라우팅과 평가 설계
 
-![프로젝트별로 다룬 역량](assets/cards/skill_map.png)
+<picture><source media="(max-width: 600px)" srcset="https://raw.githubusercontent.com/tttksj404/portfolio/main/assets/cards/skill_map_m.png"><img alt="프로젝트별로 다룬 역량" src="assets/cards/skill_map.png" width="100%"></picture>
 
 ## 사례
 
 카드를 누르면 사례 문서로 이동합니다. 문서는 문제, 내가 한 일과 설계 결정, 결과와 검증, 한계 순서로 정리했습니다.
 
-[![KeyFin AI 코칭](assets/cards/p01.png)](projects/01-keyfin-ai-coaching.md)
+<a href="projects/01-keyfin-ai-coaching.md"><picture><source media="(max-width: 600px)" srcset="https://raw.githubusercontent.com/tttksj404/portfolio/main/assets/cards/m01.png"><img alt="KeyFin AI 코칭" src="assets/cards/p01.png" width="100%"></picture></a>
 
 [사례 문서](projects/01-keyfin-ai-coaching.md) · [팀 저장소 (`ai/` 담당)](https://github.com/tttksj404/KeyFin)
 
-[![Sentinel-30 보이스피싱 미끼봇](assets/cards/p02.png)](projects/02-sentinel-30.md)
+<a href="projects/02-sentinel-30.md"><picture><source media="(max-width: 600px)" srcset="https://raw.githubusercontent.com/tttksj404/portfolio/main/assets/cards/m02.png"><img alt="Sentinel-30 보이스피싱 미끼봇" src="assets/cards/p02.png" width="100%"></picture></a>
 
 [사례 문서](projects/02-sentinel-30.md) · [저장소](https://github.com/tttksj404/AI-)
 
-[![CCTV 후보 모델 선정과 승격 게이트](assets/cards/p03.png)](projects/03-cctv-model-selection.md)
+<a href="projects/03-cctv-model-selection.md"><picture><source media="(max-width: 600px)" srcset="https://raw.githubusercontent.com/tttksj404/portfolio/main/assets/cards/m03.png"><img alt="CCTV 후보 모델 선정과 승격 게이트" src="assets/cards/p03.png" width="100%"></picture></a>
 
 [사례 문서](projects/03-cctv-model-selection.md) · [저장소](https://github.com/tttksj404/cctv-model-selection-lab)
 
-[![AntHill 주식 판단 트레이닝](assets/cards/p04.png)](projects/04-anthill-stockpulse.md)
+<a href="projects/04-anthill-stockpulse.md"><picture><source media="(max-width: 600px)" srcset="https://raw.githubusercontent.com/tttksj404/portfolio/main/assets/cards/m04.png"><img alt="AntHill 주식 판단 트레이닝" src="assets/cards/p04.png" width="100%"></picture></a>
 
 [사례 문서](projects/04-anthill-stockpulse.md) · 저장소 비공개 (요청 시 공유)
 
-[![Strategy Arena 백테스트 검증](assets/cards/p05.png)](projects/05-strategy-arena.md)
+<a href="projects/05-strategy-arena.md"><picture><source media="(max-width: 600px)" srcset="https://raw.githubusercontent.com/tttksj404/portfolio/main/assets/cards/m05.png"><img alt="Strategy Arena 백테스트 검증" src="assets/cards/p05.png" width="100%"></picture></a>
 
 [사례 문서](projects/05-strategy-arena.md) · [저장소](https://github.com/tttksj404/strategy-arena)
 
-[![AI 결과 품질 게이트와 운영 설계](assets/cards/p06.png)](projects/06-ai-quality-tools.md)
+<a href="projects/06-ai-quality-tools.md"><picture><source media="(max-width: 600px)" srcset="https://raw.githubusercontent.com/tttksj404/portfolio/main/assets/cards/m06.png"><img alt="AI 결과 품질 게이트와 운영 설계" src="assets/cards/p06.png" width="100%"></picture></a>
 
 [사례 문서](projects/06-ai-quality-tools.md) · [quiz-validator](https://github.com/tttksj404/quiz-validator) · [ai-harness-loop-orchestration](https://github.com/tttksj404/ai-harness-loop-orchestration)
 

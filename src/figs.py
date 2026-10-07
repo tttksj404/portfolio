@@ -90,24 +90,27 @@ page("c_flow", card("모델 점수 대신 증거로 승격을 정하는 흐름",
                     "역할마다 후보를 따로 비교하고, 승격은 사람이 표를 읽는 대신 게이트 코드가 증거로 판정합니다.", canvas(820, 382, n, s)))
 
 # c2. strict ReID
-RE = [("SOLIDER Top-3 평균", 0.47, 0.78, True), ("SOLIDER Top-5 평균", 0.45, 0.76, False), ("SOLIDER 전체 평균", 0.42, 0.84, False),
+RE = [("SOLIDER Top-3 평균", 0.47, 0.78, True), ("SOLIDER 최댓값", 0.46, 0.78, False), ("SOLIDER Top-5 평균", 0.45, 0.76, False), ("SOLIDER 전체 평균", 0.42, 0.84, False),
       ("SigLIP2", 0.29, 0.64, False), ("CLIP ViT-L/14", 0.21, 0.61, False), ("DINOv2", 0.19, 0.60, False)]
 X0, PW = 190, 560
 xv = lambda v: X0 + v * PW
 s = [ln(xv(g), 40, xv(g), 40 + len(RE) * 62, w=1, end=False).replace(C["ink2"], C["track"]) for g in (0, 0.25, 0.5, 0.75, 1.0)]
 s += [tx(xv(g), 64 + len(RE) * 62, f"{g:g}", col=C["muted"], size=14) for g in (0, 0.25, 0.5, 0.75, 1.0)]
+# 기준선을 먼저 그려 수치 글자가 선 위에 오게 한다
+s += [ln(xv(0.85), 30, xv(0.85), 40 + len(RE) * 62, "warn", 2.5, dash=True, end=False).replace(C["warn"], C["bad"]),
+      tx(xv(0.85), 22, "Rank-1 기준 0.85", col=C["bad"], size=14, bold=True, anchor="end"),
+      ln(xv(0.95), 30, xv(0.95), 40 + len(RE) * 62, "warn", 2.5, dash=True, end=False),
+      tx(xv(0.95) + 4, 22, "Recall@5 0.95", col=C["warn"], size=14, bold=True, anchor="start")]
 for i, (lab, r1, r5, best) in enumerate(RE):
     y = 48 + i * 62
     s.append(tx(X0 - 14, y + 26, lab, col=C["ink"], size=15.5, anchor="end", bold=best))
     s.append(f'<rect x="{X0}" y="{y}" width="{r1 * PW:.1f}" height="22" rx="4" fill="{C["info"]}"/>')
     s.append(f'<rect x="{X0}" y="{y + 24}" width="{r5 * PW:.1f}" height="22" rx="4" fill="#9DBBD9"/>')
     s.append(tx(xv(r1) + 8, y + 17, f"{r1:.2f}", col=C["info"], size=14.5, anchor="start", bold=True))
-    s.append(tx(xv(r5) + 8, y + 41, f"{r5:.2f}", col=C["ink2"], size=14.5, anchor="start", bold=True))
-s += [ln(xv(0.85), 30, xv(0.85), 40 + len(RE) * 62, "warn", 2.5, dash=True, end=False).replace(C["warn"], C["bad"]),
-      tx(xv(0.85), 22, "Rank-1 기준 0.85", col=C["bad"], size=14, bold=True, anchor="end"),
-      ln(xv(0.95), 30, xv(0.95), 40 + len(RE) * 62, "warn", 2.5, dash=True, end=False),
-      tx(xv(0.95) + 4, 22, "Recall@5 0.95", col=C["warn"], size=14, bold=True, anchor="start")]
-page("c_reid", card("strict ReID 6개 구성: 모두 승격 기준 미달",
+    # 막대 끝이 기준선(0.85)에 가까우면 수치를 막대 안쪽 끝에 넣어 선과 겹치지 않게 한다
+    s.append(tx(xv(r5) - 8, y + 41, f"{r5:.2f}", col=C["ink"], size=14.5, anchor="end", bold=True, halo=False) if r5 >= 0.7 else
+             tx(xv(r5) + 8, y + 41, f"{r5:.2f}", col=C["ink2"], size=14.5, anchor="start", bold=True))
+page("c_reid", card(f"strict ReID {len(RE)}개 구성: 모두 승격 기준 미달",
                     "CHIRLA 공개 proxy, 같은 카메라·같은 시퀀스 gallery를 빼고 쟀습니다(query 95개, gallery identity 11개).",
                     legend([("Rank-1", C["info"]), ("Recall@5", "#9DBBD9")]) + canvas(820, 76 + len(RE) * 62, [], s),
                     "가장 높은 SOLIDER Top-3 평균(Rank-1 0.4737)도 기준에 못 미쳐 자동 동일인 매칭은 막고, Top-K 후보 검색에만 쓰기로 했습니다."))
